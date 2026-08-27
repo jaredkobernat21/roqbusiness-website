@@ -1,0 +1,6 @@
+.DS_Store
+supabase/.temp/
+internal/
+
+# Raw source imagery — the site ships the optimised assets/intelligence/*.jpg
+Development Intelligence/
