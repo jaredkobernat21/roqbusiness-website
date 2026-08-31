@@ -159,8 +159,6 @@
   .btn svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.9; }
   .btn-dark { background: var(--ink); color: #fff; }
   .btn-dark:hover { background: #262624; transform: translateY(-1px); }
-  .btn-light { background: var(--surface); color: var(--ink); border-color: var(--line); }
-  .btn-light:hover { border-color: #C9C9C3; transform: translateY(-1px); }
   .btn-ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,0.28); }
   .btn-ghost:hover { background: rgba(255,255,255,0.09); transform: translateY(-1px); }
   .btn-white { background: #fff; color: var(--ink); }
@@ -218,14 +216,6 @@
   .hero-sub b { font-weight: 700; color: var(--ink); }
 
   .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-  .play {
-    width: 19px; height: 19px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .play svg { width: 11px; height: 11px; fill: currentColor; stroke: none; }
-
   /* ---------------- Dashboard mock ---------------- */
 
   .dash { display: grid; gap: 12px; }
@@ -771,9 +761,9 @@
     .header-actions .btn { padding: 0 18px; }
 
     .dash-top { grid-template-columns: 1fr; }
-    .rail { flex-direction: row; justify-content: flex-start; gap: 2px; padding: 12px 16px; border-radius: var(--radius); }
-    .rail-mark { margin: 0 14px 0 0; }
-    .rail-icon { width: 44px; height: 38px; border-radius: 9px; }
+    .rail { flex-direction: row; justify-content: flex-start; gap: 2px; padding: 12px 16px; border-radius: var(--radius); overflow: hidden; }
+    .rail-mark { margin: 0 14px 0 0; flex: none; }
+    .rail-icon { width: 44px; height: 38px; border-radius: 9px; flex: 0 1 44px; min-width: 0; }
     .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 0; }
     .strip-item:nth-child(odd) { border-left: 0; }
     .strip-item:nth-child(3) { border-left: 0; }
@@ -783,6 +773,12 @@
 
     .about-grid { grid-template-columns: 1fr; }
     .contact-card { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 980px) {
+    .footer-nav { gap: 4px 26px; }
+    .footer-nav a { padding: 9px 0; }
+    .footer-legal a { padding: 9px 0; }
   }
 
   @media (max-width: 700px) {
@@ -797,6 +793,9 @@
 
   @media (max-width: 440px) {
     .wordmark span { display: none; }
+    .rail { padding: 10px 12px; gap: 0; }
+    .rail-mark { margin-right: 10px; }
+    .rail-icon { width: auto; flex: 1 1 0; min-width: 0; height: 36px; }
     .grow-cards, .operate-cards { grid-template-columns: 1fr; }
     .strip { grid-template-columns: 1fr; }
     .strip-item { border-left: 0 !important; }
@@ -845,10 +844,6 @@
           <button type="button" class="btn btn-dark" data-score-open>Free Visibility Score
             <svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
-          <a class="btn btn-light" href="#grow">
-            <span class="play"><svg viewBox="0 0 12 12"><path d="M2 1.2l8.4 4.8L2 10.8z"/></svg></span>
-            Watch Overview
-          </a>
         </div>
       </div>
 
