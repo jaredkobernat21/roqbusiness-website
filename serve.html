@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ROQ Serve — Get Found. Run Better.</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/logo/roq-icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/logo/roq-icon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="description" content="ROQ Serve helps service businesses grow through local SEO — and operate through smarter systems. Local SEO, Google Business Profile, reviews, websites, CRM, scheduling, payments, and automation in one place." />
+<link rel="canonical" href="https://roqbusiness.com/serve.html" />
+
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="ROQ Business" />
+<meta property="og:title" content="ROQ Serve — Get Found. Run Better." />
+<meta property="og:description" content="ROQ Serve helps service businesses grow through local SEO — and operate through smarter systems." />
+<meta property="og:url" content="https://roqbusiness.com/serve.html" />
+<meta property="og:image" content="https://roqbusiness.com/assets/roq-share.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="ROQ Serve — Get Found. Run Better." />
+<meta name="twitter:description" content="ROQ Serve helps service businesses grow through local SEO — and operate through smarter systems." />
+<meta name="twitter:image" content="https://roqbusiness.com/assets/roq-share.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F3F3F1;
+    --surface: #FFFFFF;
+    --surface-2: #FAFAF9;
+    --panel: #F6F6F4;
+    --ink: #0A0A0A;
+    --ink-2: #3D3D3A;
+    --muted: #75756E;
+    --faint: #9A9A93;
+    --line: #E6E6E2;
+    --line-2: #EFEFEC;
+    --green: #17A05B;
+    --radius-lg: 20px;
+    --radius: 14px;
+    --radius-sm: 11px;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --shadow-card: 0 1px 2px rgba(10,10,10,0.04), 0 8px 28px rgba(10,10,10,0.05);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  ul { list-style: none; }
+  img, svg { display: block; max-width: 100%; }
+  ::selection { background: var(--ink); color: #fff; }
+
+  .wrap { max-width: 1420px; margin: 0 auto; padding: 0 clamp(18px, 3vw, 40px); }
+
+  /* ---------------- Product bar ---------------- */
+
+  .product-bar { background: #0B0B0A; }
+  .product-bar .wrap {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    height: 38px;
+  }
+  .product-bar a {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    transition: color .2s var(--ease);
+  }
+  .product-bar a:hover { color: rgba(255,255,255,0.78); }
+  .product-bar a.active { color: #fff; }
+
+  /* ---------------- Header ---------------- */
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--surface);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
+  }
+  .site-header.scrolled {
+    border-bottom-color: var(--line);
+    box-shadow: 0 1px 20px rgba(10,10,10,0.04);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    height: 82px;
+  }
+
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    white-space: nowrap;
+  }
+  .wordmark img {
+    width: 34px;
+    height: 34px;
+    display: block;
+    flex: none;
+    border-radius: 8px;
+  }
+  .wordmark span {
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.34em;
+    color: var(--ink-2);
+    line-height: 1;
+  }
+
+  .site-tabs {
+    display: flex;
+    align-items: center;
+    gap: clamp(18px, 2.6vw, 40px);
+  }
+  .site-tabs a {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--ink-2);
+    padding: 6px 0;
+    position: relative;
+    transition: color .2s var(--ease);
+  }
+  .site-tabs a:hover { color: var(--ink); }
+  .site-tabs a::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: -1px;
+    height: 1.5px;
+    background: var(--ink);
+    transform: scaleX(0);
+    transition: transform .28s var(--ease);
+  }
+  .site-tabs a:hover::after,
+  .site-tabs a.active::after { transform: scaleX(1); }
+  .site-tabs a.active { color: var(--ink); font-weight: 600; }
+
+  .header-actions { display: flex; align-items: center; gap: 12px; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 48px;
+    padding: 0 26px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    border: 1px solid transparent;
+    font-family: inherit;
+    -webkit-appearance: none;
+    cursor: pointer;
+    transition: transform .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease), color .25s var(--ease);
+  }
+  .btn svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.9; }
+  .btn-dark { background: var(--ink); color: #fff; }
+  .btn-dark:hover { background: #262624; transform: translateY(-1px); }
+  .btn-ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,0.28); }
+  .btn-ghost:hover { background: rgba(255,255,255,0.09); transform: translateY(-1px); }
+  .btn-white { background: #fff; color: var(--ink); }
+  .btn-white:hover { transform: translateY(-1px); background: #F0F0EC; }
+  .header-actions .btn { height: 46px; }
+
+  .btn-label-short { display: none; }
+
+  .nav-toggle {
+    display: none;
+    width: 44px; height: 44px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--surface);
+    align-items: center;
+    justify-content: center;
+  }
+  .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
+    content: '';
+    display: block;
+    width: 17px; height: 1.6px;
+    background: var(--ink);
+    border-radius: 2px;
+    transition: transform .3s var(--ease);
+  }
+  .nav-toggle span { position: relative; }
+  .nav-toggle span::before { position: absolute; top: -5.5px; }
+  .nav-toggle span::after { position: absolute; top: 5.5px; }
+
+  /* ---------------- Hero ---------------- */
+
+  .hero { padding: clamp(38px, 5vw, 64px) 0 clamp(30px, 4vw, 48px); }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.53fr);
+    gap: clamp(28px, 3.4vw, 56px);
+    align-items: start;
+  }
+
+  h1 {
+    font-size: clamp(46px, 5.6vw, 84px);
+    font-weight: 800;
+    letter-spacing: -0.048em;
+    line-height: 0.96;
+    margin-top: 6px;
+  }
+  .hero-sub {
+    margin-top: 26px;
+    font-size: clamp(16px, 1.24vw, 18.5px);
+    line-height: 1.55;
+    color: var(--ink-2);
+    max-width: 30ch;
+    letter-spacing: -0.012em;
+  }
+  .hero-sub b { font-weight: 700; color: var(--ink); }
+
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+  /* ---------------- Dashboard mock ---------------- */
+
+  .dash { display: grid; gap: 12px; }
+  .dash-top {
+    display: grid;
+    grid-template-columns: 80px minmax(0, 1.45fr) minmax(0, 1fr);
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .rail {
+    background: #0B0B0A;
+    border-radius: var(--radius-lg);
+    padding: 22px 0 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .rail-mark {
+    color: #fff;
+    font-weight: 800;
+    font-size: 17px;
+    letter-spacing: -0.02em;
+    margin-bottom: 26px;
+  }
+  .rail-icon {
+    width: 100%;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.72);
+    transition: color .2s var(--ease), background .2s var(--ease);
+  }
+  .rail-icon svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .rail-icon.active { background: rgba(255,255,255,0.10); color: #fff; }
+  .rail-icon:hover { color: #fff; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line-2);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+  }
+  .card-pad { padding: 18px; }
+
+  .card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .card-title { font-size: clamp(16px, 1.28vw, 19px); font-weight: 700; letter-spacing: -0.025em; }
+  .card-select {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12.5px;
+    color: var(--muted);
+  }
+  .card-select svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+  .tile {
+    border: 1px solid var(--line-2);
+    border-radius: var(--radius);
+    padding: 15px 16px;
+    background: var(--surface);
+  }
+  .tile + .tile { margin-top: 11px; }
+  .tile-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .tile-label { font-size: 12.5px; font-weight: 600; letter-spacing: -0.005em; }
+
+  .metric-row {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .metric { padding-right: 12px; }
+  .metric + .metric { border-left: 1px solid var(--line-2); padding-left: 13px; }
+  .metric-label { font-size: 11.5px; color: var(--muted); }
+  .metric-value {
+    margin-top: 3px;
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .metric-value b { font-size: clamp(19px, 1.62vw, 25px); font-weight: 700; letter-spacing: -0.035em; }
+  .delta { font-size: 11.5px; font-weight: 600; color: var(--green); white-space: nowrap; }
+  .delta::before { content: '↑ '; }
+
+  .rank-row {
+    display: grid;
+    grid-template-columns: minmax(0, 0.74fr) minmax(0, 1.02fr) minmax(0, 0.92fr);
+    align-items: center;
+    gap: 0;
+  }
+  .rank-row > * + * { border-left: 1px solid var(--line-2); padding-left: 13px; }
+  .rank-cell .rank-top { font-size: 12.5px; font-weight: 600; }
+  .rank-cell .rank-big {
+    margin: 7px 0 4px;
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+  }
+  .rank-cell .rank-big b { font-size: clamp(21px, 1.75vw, 27px); font-weight: 700; letter-spacing: -0.035em; }
+  .rank-cell .rank-sub { font-size: 10.5px; color: var(--faint); white-space: nowrap; }
+  .spark { padding: 0 10px; }
+  .spark svg { width: 100%; height: 62px; }
+
+  /* With two tiles the SEO card would otherwise leave dead space at the
+     bottom of the row; the trend tile takes up the slack and the chart
+     grows into it. */
+  .dash-seo { display: flex; flex-direction: column; }
+  .dash-seo > .tile:last-child { flex: 1 1 auto; display: flex; align-items: center; }
+  .dash-seo > .tile:last-child .rank-row { width: 100%; height: 100%; }
+  .dash-seo > .tile:last-child .spark { align-self: stretch; display: flex; align-items: center; }
+  .dash-seo > .tile:last-child .spark svg { height: 100%; min-height: 62px; max-height: 108px; }
+
+  .os-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .os-tile {
+    border: 1px solid var(--line-2);
+    border-radius: var(--radius);
+    padding: 12px 11px;
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr);
+    gap: 8px;
+    align-items: start;
+    transition: border-color .25s var(--ease), background .25s var(--ease);
+  }
+  .os-tile:hover { border-color: #D9D9D3; background: var(--surface-2); }
+  .os-tile svg { width: 20px; height: 20px; fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; margin-top: 2px; }
+  .os-tile h4 { font-size: 12.5px; font-weight: 700; letter-spacing: -0.015em; }
+  .os-tile p { font-size: 10px; color: var(--muted); line-height: 1.42; margin-top: 3px; }
+
+  .strip {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    background: var(--surface);
+    border: 1px solid var(--line-2);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 15px clamp(10px, 1.2vw, 18px);
+  }
+  .strip-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 clamp(8px, 1vw, 16px);
+  }
+  .strip-item + .strip-item { border-left: 1px solid var(--line-2); }
+  .strip-chip {
+    flex: none;
+    width: 34px; height: 34px;
+    border-radius: 10px;
+    background: var(--panel);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .strip-chip svg { width: 16px; height: 16px; fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .strip-label { font-size: 11.5px; color: var(--muted); }
+  .strip-value { display: flex; align-items: baseline; gap: 8px; margin-top: 1px; }
+  .strip-value b { font-size: clamp(17px, 1.4vw, 22px); font-weight: 700; letter-spacing: -0.035em; }
+
+  /* ---------------- Grow / Operate ---------------- */
+
+  .pillars { padding-bottom: clamp(14px, 2vw, 22px); }
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 4.2fr) minmax(0, 5.3fr);
+    gap: clamp(14px, 1.6vw, 22px);
+  }
+  .pillar {
+    background: var(--panel);
+    border: 1px solid var(--line-2);
+    border-radius: var(--radius-lg);
+    padding: clamp(18px, 1.8vw, 26px);
+  }
+  .pillar-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: clamp(16px, 1.6vw, 22px);
+  }
+  .pillar-head .ph-mark { display: inline-flex; align-items: center; gap: 9px; }
+  .pillar-head svg.ph-icon { width: 17px; height: 17px; fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .pillar-head h2 { font-size: 14.5px; font-weight: 700; letter-spacing: 0.06em; }
+  .pillar-head .ph-rule { flex: 1; height: 1px; background: var(--line); }
+  .pillar-head .ph-note { font-size: 12.5px; color: var(--muted); white-space: nowrap; }
+
+  .pillar-cards { display: grid; gap: clamp(10px, 1vw, 14px); }
+  .grow-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .operate-cards { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+  .pcard {
+    background: var(--surface);
+    border: 1px solid var(--line-2);
+    border-radius: var(--radius);
+    padding: 16px 15px 13px;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease), border-color .3s var(--ease);
+  }
+  .pcard:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(10,10,10,0.07);
+    border-color: #DEDED8;
+  }
+  .pcard .pc-icon { height: 28px; margin-bottom: 18px; display: flex; align-items: center; }
+  .pcard .pc-icon svg { width: 24px; height: 24px; fill: none; stroke: var(--ink); stroke-width: 1.55; stroke-linecap: round; stroke-linejoin: round; }
+  .pcard h3 { font-size: 14px; font-weight: 700; letter-spacing: -0.02em; }
+  .pcard p { font-size: 12px; color: var(--muted); line-height: 1.5; margin-top: 7px; }
+  .pcard .pc-arrow { margin-top: auto; padding-top: 14px; display: flex; justify-content: flex-end; color: var(--ink); }
+  .pcard .pc-arrow svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; transition: transform .3s var(--ease); }
+  .pcard:hover .pc-arrow svg { transform: translateX(4px); }
+
+  .g-letter {
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  /* ---------------- Results ---------------- */
+
+  .results { padding: clamp(14px, 2vw, 22px) 0 clamp(40px, 5vw, 72px); }
+  .results-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .badge-card {
+    background: var(--surface);
+    border: 1px solid var(--line-2);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: clamp(26px, 3vw, 40px) clamp(22px, 2.6vw, 40px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(16px, 1.8vw, 24px);
+    text-align: left;
+  }
+  .badge-shield { flex: none; width: 40px; height: 40px; }
+  .badge-shield svg { width: 40px; height: 40px; fill: var(--ink); stroke: none; }
+  .badge-card p {
+    font-size: clamp(19px, 2.1vw, 30px);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+  }
+  @media (max-width: 560px) {
+    .badge-card { flex-direction: column; align-items: flex-start; }
+  }
+
+  /* ---------------- About ---------------- */
+
+  .about { padding: clamp(46px, 5vw, 78px) 0; border-top: 1px solid var(--line); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+    gap: clamp(28px, 3.4vw, 60px);
+    align-items: start;
+  }
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .about h2 {
+    margin-top: 16px;
+    font-size: clamp(30px, 3.2vw, 46px);
+    font-weight: 800;
+    letter-spacing: -0.042em;
+    line-height: 1.02;
+  }
+  .about-lede { margin-top: 18px; font-size: 15.5px; line-height: 1.6; color: var(--muted); max-width: 42ch; }
+  .about-items {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(14px, 1.6vw, 22px);
+  }
+  .about-item {
+    background: var(--surface);
+    border: 1px solid var(--line-2);
+    border-radius: var(--radius);
+    padding: 22px 20px;
+  }
+  .about-item svg { width: 23px; height: 23px; fill: none; stroke: var(--ink); stroke-width: 1.55; stroke-linecap: round; stroke-linejoin: round; }
+  .about-item h3 { margin-top: 18px; font-size: 15px; font-weight: 700; letter-spacing: -0.022em; }
+  .about-item p { margin-top: 8px; font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+  /* ---------------- Contact ---------------- */
+
+  .contact { padding: 0 0 clamp(46px, 5vw, 78px); }
+  .contact-card {
+    background: #0B0B0A;
+    color: #fff;
+    border-radius: 26px;
+    padding: clamp(34px, 4.4vw, 66px) clamp(24px, 3.4vw, 60px);
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: clamp(26px, 3vw, 48px);
+    align-items: center;
+  }
+  .contact-card .eyebrow { color: rgba(255,255,255,0.5); }
+  .contact-card h2 {
+    margin-top: 16px;
+    font-size: clamp(30px, 3.4vw, 50px);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 1.0;
+  }
+  .contact-card p {
+    margin-top: 18px;
+    font-size: 15.5px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.62);
+    max-width: 46ch;
+  }
+  .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+  .contact-side { display: grid; gap: 12px; }
+  .contact-line {
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    transition: border-color .25s var(--ease), background .25s var(--ease);
+  }
+  a.contact-line:hover { border-color: rgba(255,255,255,0.34); background: rgba(255,255,255,0.05); }
+  .contact-line svg { flex: none; width: 19px; height: 19px; fill: none; stroke: rgba(255,255,255,0.72); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .contact-line .cl-k { display: block; font-size: 11.5px; color: rgba(255,255,255,0.45); }
+  .contact-line .cl-v { display: block; font-size: 14px; font-weight: 600; margin-top: 2px; }
+
+  /* ---------------- Footer ---------------- */
+
+  footer { border-top: 1px solid var(--line); padding: clamp(34px, 4vw, 54px) 0 34px; }
+  .footer-grid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 28px;
+  }
+  .footer-tagline { margin-top: 14px; font-size: 13.5px; color: var(--muted); max-width: 34ch; }
+  .footer-nav { display: flex; flex-wrap: wrap; gap: 12px 30px; }
+  .footer-nav a { font-size: 13.5px; color: var(--ink-2); transition: color .2s var(--ease); }
+  .footer-nav a:hover { color: var(--ink); }
+  .footer-bottom {
+    margin-top: clamp(28px, 3vw, 44px);
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 26px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12.5px;
+    color: var(--faint);
+  }
+  .footer-legal { display: flex; gap: 22px; }
+  .footer-legal a:hover { color: var(--ink); }
+
+  /* ---------------- Visibility score modal ---------------- */
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(10,10,10,0.55);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s var(--ease), visibility .3s var(--ease);
+  }
+  .modal-overlay[hidden] { display: none; }
+  .modal-overlay.open { opacity: 1; visibility: visible; }
+
+  .modal-panel {
+    width: 100%;
+    max-width: 520px;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    background: var(--surface);
+    border-radius: 24px;
+    padding: clamp(26px, 3.4vw, 40px);
+    position: relative;
+    box-shadow: 0 30px 80px rgba(10,10,10,0.28);
+    transform: translateY(14px) scale(0.985);
+    transition: transform .35s var(--ease);
+  }
+  .modal-overlay.open .modal-panel { transform: none; }
+
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--ink-2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color .2s var(--ease), color .2s var(--ease);
+  }
+  .modal-close:hover { border-color: #C9C9C3; color: var(--ink); }
+  .modal-close svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+
+  .modal-panel h2 {
+    font-size: clamp(24px, 2.6vw, 31px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.04;
+    padding-right: 44px;
+  }
+  .modal-sub { margin-top: 12px; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
+
+  .field { margin-top: 18px; }
+  .field label { display: block; font-size: 12.5px; font-weight: 600; margin-bottom: 7px; }
+  .field label i { font-style: normal; font-weight: 500; color: var(--faint); }
+  .field input {
+    width: 100%;
+    height: 48px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--surface-2);
+    padding: 0 15px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--ink);
+    -webkit-appearance: none;
+    transition: border-color .2s var(--ease), background .2s var(--ease);
+  }
+  .field input::placeholder { color: var(--faint); }
+  .field input:focus { outline: none; border-color: var(--ink); background: var(--surface); }
+
+  .seg {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    padding: 4px;
+    background: var(--panel);
+    border: 1px solid var(--line-2);
+    border-radius: 12px;
+  }
+  .seg button {
+    height: 38px;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    transition: background .2s var(--ease), color .2s var(--ease);
+  }
+  .seg button.on { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgba(10,10,10,0.08); }
+
+  .modal-error { margin-top: 14px; font-size: 13px; line-height: 1.5; color: #C0392B; display: none; }
+  .modal-error.show { display: block; }
+  .modal-actions { margin-top: 22px; }
+  .modal-actions .btn { width: 100%; }
+  .modal-fine { margin-top: 14px; font-size: 11.5px; line-height: 1.5; color: var(--faint); text-align: center; }
+  .modal-fine a { text-decoration: underline; }
+
+  .modal-done { display: none; text-align: center; padding: 6px 0 2px; }
+  .modal-done.show { display: block; }
+  .modal-done .tick {
+    width: 54px; height: 54px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: var(--ink);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .modal-done .tick svg { width: 24px; height: 24px; fill: none; stroke: #fff; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+  .modal-done h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.03em; }
+  .modal-done p { margin-top: 10px; font-size: 14.5px; line-height: 1.55; color: var(--muted); }
+
+  /* ---------------- Reveal ---------------- */
+
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  .reveal.in-view { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    * { animation: none !important; }
+  }
+
+  /* ---------------- Responsive ---------------- */
+
+  @media (max-width: 1240px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-sub { max-width: 46ch; }
+    .dash-top { grid-template-columns: 74px minmax(0, 1.45fr) minmax(0, 1fr); }
+    .pillar-grid { grid-template-columns: 1fr; }
+    .grow-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .operate-cards { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 980px) {
+    .site-tabs {
+      display: none;
+      position: absolute;
+      top: 82px; left: 0; right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      padding: 8px clamp(18px, 3vw, 40px) 18px;
+      box-shadow: 0 18px 40px rgba(10,10,10,0.08);
+    }
+    .site-tabs.open { display: flex; }
+    .site-tabs a { padding: 14px 0; border-bottom: 1px solid var(--line-2); font-size: 16px; }
+    .site-tabs a::after { display: none; }
+    .nav-toggle { display: flex; }
+    .header-actions .btn .btn-label { display: none; }
+    .header-actions .btn .btn-label-short { display: inline; }
+    .header-actions .btn { padding: 0 18px; }
+
+    .dash-top { grid-template-columns: 1fr; }
+    .rail { flex-direction: row; justify-content: flex-start; gap: 2px; padding: 12px 16px; border-radius: var(--radius); overflow: hidden; }
+    .rail-mark { margin: 0 14px 0 0; flex: none; }
+    .rail-icon { width: 44px; height: 38px; border-radius: 9px; flex: 0 1 44px; min-width: 0; }
+    .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 0; }
+    .strip-item:nth-child(odd) { border-left: 0; }
+    .strip-item:nth-child(3) { border-left: 0; }
+
+    .grow-cards, .operate-cards { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .pcard { min-height: 0; }
+
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-card { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 980px) {
+    .footer-nav { gap: 4px 26px; }
+    .footer-nav a { padding: 9px 0; }
+    .footer-legal a { padding: 9px 0; }
+  }
+
+  @media (max-width: 700px) {
+    .metric-row { grid-template-columns: 1fr; gap: 12px; }
+    .metric + .metric { border-left: 0; border-top: 1px solid var(--line-2); padding-left: 0; padding-top: 12px; }
+    .rank-row { grid-template-columns: 1fr 1fr; }
+    .spark { grid-column: 1 / -1; border-left: 0 !important; padding: 12px 0 0; }
+    .os-grid { grid-template-columns: 1fr; }
+    .grow-cards, .operate-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .about-items { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 440px) {
+    .wordmark span { display: none; }
+    .rail { padding: 10px 12px; gap: 0; }
+    .rail-mark { margin-right: 10px; }
+    .rail-icon { width: auto; flex: 1 1 0; min-width: 0; height: 36px; }
+    .grow-cards, .operate-cards { grid-template-columns: 1fr; }
+    .strip { grid-template-columns: 1fr; }
+    .strip-item { border-left: 0 !important; }
+  }
+</style>
+</head>
+<body id="top">
+
+  <div class="product-bar">
+    <div class="wrap">
+      <a href="/">Invest</a>
+      <a href="/serve.html" class="active" aria-current="page">Serve</a>
+    </div>
+  </div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="wrap header-inner">
+      <a class="wordmark" href="/serve.html" aria-label="ROQ Serve">
+        <img src="/assets/logo/roq-icon-192.png" alt="" width="34" height="34">
+        <span>SERVE</span>
+      </a>
+
+      <nav class="site-tabs" id="siteTabs" aria-label="Main">
+        <a href="#top" class="active" aria-current="page">Home</a>
+        <a href="#grow">Grow</a>
+        <a href="#operate">Operate</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" class="btn btn-dark" data-score-open>
+          <span class="btn-label">Free Visibility Score</span>
+          <span class="btn-label-short">Free Score</span>
+          <svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="nav-toggle" id="navToggle" aria-controls="siteTabs" aria-expanded="false" aria-label="Menu"><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+
+      <div class="hero-copy reveal">
+        <h1>Get found.<br>Run better.</h1>
+        <p class="hero-sub">ROQ Business helps service <b>businesses grow</b> through <b>local SEO</b>—and operate through smarter systems.</p>
+
+        <div class="hero-actions">
+          <button type="button" class="btn btn-dark" data-score-open>Free Visibility Score
+            <svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="dash">
+          <div class="dash-top">
+
+            <aside class="rail" aria-hidden="true">
+              <span class="rail-mark">ROQ</span>
+              <span class="rail-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.6"/></svg></span>
+              <span class="rail-icon active"><svg viewBox="0 0 24 24"><path d="M3 17l5.5-5.5 3.5 3.5L21 6"/><path d="M15 6h6v6"/></svg></span>
+              <span class="rail-icon"><svg viewBox="0 0 24 24"><circle cx="10" cy="9" r="3.2"/><path d="M4 20c0-3.3 2.7-5.4 6-5.4s6 2.1 6 5.4"/><path d="M17 7.5a2.5 2.5 0 0 1 0 4.6"/></svg></span>
+              <span class="rail-icon"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="16" rx="2.4"/><path d="M3.5 10h17M8 3v4M16 3v4"/><circle cx="9" cy="15" r="1.1" fill="currentColor" stroke="none"/></svg></span>
+              <span class="rail-icon"><svg viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M16.5 7.2C15.6 6 14 5.4 12 5.4c-2.6 0-4.2 1.2-4.2 3s1.4 2.7 4.2 3.3c2.9.6 4.5 1.5 4.5 3.4 0 2-1.8 3.3-4.5 3.3-2.2 0-3.9-.7-4.8-2"/></svg></span>
+              <span class="rail-icon"><svg viewBox="0 0 24 24"><path d="M13.5 2.5L4.5 13.8h6.2L10 21.5l9.2-11.4H13z"/></svg></span>
+              <span class="rail-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 14.6a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 1 1-4 0v-.11a1.7 1.7 0 0 0-1.11-1.56 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 1 1 0-4h.11a1.7 1.7 0 0 0 1.56-1.11 1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34H9a1.7 1.7 0 0 0 1.03-1.56V3a2 2 0 1 1 4 0v.11a1.7 1.7 0 0 0 1.03 1.56 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87V9a1.7 1.7 0 0 0 1.56 1.03H21a2 2 0 1 1 0 4h-.11a1.7 1.7 0 0 0-1.49 1.03z"/></svg></span>
+            </aside>
+
+            <div class="card card-pad dash-seo">
+              <div class="card-head">
+                <h2 class="card-title">Local SEO Overview</h2>
+                <span class="card-select">Last 30 Days
+                  <svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+                </span>
+              </div>
+
+              <div class="tile">
+                <div class="tile-head">
+                  <span class="tile-label">Google Business Profile</span>
+                  <svg width="19" height="19" viewBox="0 0 48 48" aria-hidden="true">
+                    <path fill="#4285F4" d="M45.1 24.5c0-1.6-.1-3.1-.4-4.5H24v8.5h11.8c-.5 2.7-2.1 5-4.4 6.6v5.5h7.1c4.2-3.8 6.6-9.5 6.6-16.1z"/>
+                    <path fill="#34A853" d="M24 46c6 0 11-2 14.6-5.4l-7.1-5.5c-2 1.3-4.5 2.1-7.5 2.1-5.8 0-10.7-3.9-12.4-9.1H4.3v5.7C7.9 41.1 15.4 46 24 46z"/>
+                    <path fill="#FBBC05" d="M11.6 28.1c-.4-1.3-.7-2.7-.7-4.1s.3-2.8.7-4.1v-5.7H4.3A22 22 0 0 0 2 24c0 3.5.8 6.9 2.3 9.8l7.3-5.7z"/>
+                    <path fill="#EA4335" d="M24 10.8c3.3 0 6.2 1.1 8.5 3.3l6.3-6.3C35 4.3 30 2 24 2 15.4 2 7.9 6.9 4.3 14.2l7.3 5.7c1.7-5.2 6.6-9.1 12.4-9.1z"/>
+                  </svg>
+                </div>
+                <div class="metric-row">
+                  <div class="metric">
+                    <span class="metric-label">Views</span>
+                    <span class="metric-value"><b>18.7K</b><span class="delta">28%</span></span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Searches</span>
+                    <span class="metric-value"><b>9.3K</b><span class="delta">32%</span></span>
+                  </div>
+                  <div class="metric">
+                    <span class="metric-label">Calls</span>
+                    <span class="metric-value"><b>667</b><span class="delta">21%</span></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tile">
+                <div class="rank-row">
+                  <div class="rank-cell">
+                    <span class="rank-top">Map Rank</span>
+                    <span class="rank-big"><b>#1</b><span class="delta">3</span></span>
+                    <span class="rank-sub">Average Position</span>
+                  </div>
+                  <div class="spark">
+                    <svg viewBox="0 0 260 62" preserveAspectRatio="none" aria-hidden="true">
+                      <polyline points="4,54 28,49 52,50 76,34 100,37 124,26 148,32 172,22 196,24 220,14 252,4"
+                                fill="none" stroke="#0A0A0A" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+                    </svg>
+                  </div>
+                  <div class="rank-cell">
+                    <span class="rank-top">Leads</span>
+                    <span class="rank-big"><b>237</b><span class="delta">27%</span></span>
+                    <span class="rank-sub">Form Submissions</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="card card-pad">
+              <div class="card-head">
+                <h2 class="card-title">ROQ OS</h2>
+              </div>
+              <div class="os-grid">
+                <div class="os-tile">
+                  <svg viewBox="0 0 24 24"><circle cx="13" cy="8.5" r="3"/><path d="M7 20c0-3.2 2.7-5.2 6-5.2s6 2 6 5.2"/><path d="M6 6.5h3M6 10h3"/></svg>
+                  <div><h4>CRM</h4><p>Manage leads and pipelines</p></div>
+                </div>
+                <div class="os-tile">
+                  <svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="16" rx="2.4"/><path d="M3.5 10h17M8 3v4M16 3v4"/><circle cx="8.5" cy="14.5" r="1" fill="currentColor" stroke="none"/><circle cx="13" cy="14.5" r="1" fill="currentColor" stroke="none"/></svg>
+                  <div><h4>Scheduling</h4><p>Schedule jobs and appointments</p></div>
+                </div>
+                <div class="os-tile">
+                  <svg viewBox="0 0 24 24"><circle cx="10" cy="8.5" r="3.2"/><path d="M4 20c0-3.3 2.7-5.4 6-5.4s6 2.1 6 5.4"/><path d="M17.5 6.5l1.6 1.6M17.5 11.5l1.6-1.6"/></svg>
+                  <div><h4>Customers</h4><p>Customer profiles and history</p></div>
+                </div>
+                <div class="os-tile">
+                  <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2.2"/><path d="M3 10h18M6.5 14.5h4"/></svg>
+                  <div><h4>Payments</h4><p>Invoices, payments and deposits</p></div>
+                </div>
+                <div class="os-tile">
+                  <svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M18 3v4h-4"/><path d="M16 15l4 4M20 15l-4 4"/></svg>
+                  <div><h4>Automation</h4><p>Workflows and task automation</p></div>
+                </div>
+                <div class="os-tile">
+                  <svg viewBox="0 0 24 24"><path d="M4 20V4"/><rect x="7" y="12" width="3.4" height="8" rx="1"/><rect x="13" y="8" width="3.4" height="12" rx="1"/><path d="M4 20h17"/></svg>
+                  <div><h4>Reports</h4><p>Track performance and growth</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="strip">
+            <div class="strip-item">
+              <span class="strip-chip"><svg viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2.2"/><path d="M9 4h6v2.4H9z" fill="currentColor" stroke="none"/><path d="M9 12h6M9 16h4"/></svg></span>
+              <span><span class="strip-label">Leads</span><span class="strip-value"><b>237</b><span class="delta">27%</span></span></span>
+            </div>
+            <div class="strip-item">
+              <span class="strip-chip"><svg viewBox="0 0 24 24"><rect x="3.5" y="7" width="17" height="13" rx="2.2"/><path d="M9 7V5.4A1.4 1.4 0 0 1 10.4 4h3.2A1.4 1.4 0 0 1 15 5.4V7"/><path d="M9 13.5l2 2 4-4"/></svg></span>
+              <span><span class="strip-label">Jobs</span><span class="strip-value"><b>128</b><span class="delta">18%</span></span></span>
+            </div>
+            <div class="strip-item">
+              <span class="strip-chip"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v9"/><path d="M14.3 9.6c-.5-.7-1.4-1-2.3-1-1.4 0-2.3.6-2.3 1.6s.8 1.4 2.3 1.7c1.6.3 2.5.8 2.5 1.8s-1 1.7-2.5 1.7c-1.2 0-2.1-.4-2.6-1.1"/></svg></span>
+              <span><span class="strip-label">Revenue</span><span class="strip-value"><b>$68.4K</b><span class="delta">24%</span></span></span>
+            </div>
+            <div class="strip-item">
+              <span class="strip-chip"><svg viewBox="0 0 24 24"><path d="M20 12.5V19a1.8 1.8 0 0 1-1.8 1.8H5.8A1.8 1.8 0 0 1 4 19V6.8A1.8 1.8 0 0 1 5.8 5h6.7"/><path d="M14.5 9.5L20 4M20 4h-4.4M20 4v4.4"/></svg></span>
+              <span><span class="strip-label">Conversion</span><span class="strip-value"><b>21.3%</b><span class="delta">16%</span></span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= GROW / OPERATE ================= -->
+  <section class="pillars">
+    <div class="wrap pillar-grid">
+
+      <div class="pillar reveal" id="grow">
+        <div class="pillar-head">
+          <span class="ph-mark">
+            <svg class="ph-icon" viewBox="0 0 24 24"><path d="M4 20V5"/><rect x="7" y="13" width="3.2" height="7" rx="1"/><rect x="12.6" y="9" width="3.2" height="11" rx="1"/><path d="M4 20h17"/></svg>
+            <h2>GROW</h2>
+          </span>
+          <span class="ph-rule"></span>
+          <span class="ph-note">More growth. More visibility. More leads.</span>
+        </div>
+        <div class="pillar-cards grow-cards">
+          <a class="pcard" href="https://os.roqhome.com/signup">
+            <span class="pc-icon"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4L21 21"/></svg></span>
+            <h3>Local SEO</h3>
+            <p>Rank higher in local search and map results that drive real leads.</p>
+            <span class="pc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span>
+          </a>
+          <a class="pcard" href="https://os.roqhome.com/signup">
+            <span class="pc-icon"><span class="g-letter">G</span></span>
+            <h3>Google Business</h3>
+            <p>Optimize your profile to increase visibility, engagement, and calls.</p>
+            <span class="pc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span>
+          </a>
+          <a class="pcard" href="https://os.roqhome.com/signup">
+            <span class="pc-icon"><svg viewBox="0 0 24 24"><path d="M12 3.5l2.7 5.6 6.1.8-4.4 4.2 1.1 6-5.5-2.9-5.5 2.9 1.1-6L3.2 9.9l6.1-.8z"/></svg></span>
+            <h3>Reviews</h3>
+            <p>Build trust and credibility with a steady stream of 5-star reviews.</p>
+            <span class="pc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span>
+          </a>
+          <a class="pcard" href="https://os.roqhome.com/signup">
+            <span class="pc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M3.4 12h17.2"/><path d="M12 3.4c2.3 2.4 3.5 5.4 3.5 8.6s-1.2 6.2-3.5 8.6c-2.3-2.4-3.5-5.4-3.5-8.6S9.7 5.8 12 3.4z"/></svg></span>
+            <h3>Websites</h3>
+            <p>Fast, modern websites that convert visitors into customers.</p>
+            <span class="pc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="pillar reveal" id="operate">
+        <div class="pillar-head">
+          <span class="ph-mark">
+            <svg class="ph-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 14.6a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 1 1-4 0v-.11a1.7 1.7 0 0 0-1.11-1.56 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 1 1 0-4h.11a1.7 1.7 0 0 0 1.56-1.11 1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34H9a1.7 1.7 0 0 0 1.03-1.56V3a2 2 0 1 1 4 0v.11a1.7 1.7 0 0 0 1.03 1.56 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87V9a1.7 1.7 0 0 0 1.56 1.03H21a2 2 0 1 1 0 4h-.11a1.7 1.7 0 0 0-1.49 1.03z"/></svg>
+            <h2>OPERATE</h2>
+          </span>
+          <span class="ph-rule"></span>
+          <span class="ph-note">Smarter systems. Smoother operations.</span>
+        </div>
+        <div class="pillar-cards operate-cards">
+          <a class="pcard" href="https://os.roqhome.com/signup">
+            <span class="pc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3"/><path d="M6 20c0-3.3 2.7-5.4 6-5.4s6 2.1 6 5.4"/><path d="M4.5 9.5a2.2 2.2 0 0 1 0-3.6M19.5 9.5a2.2 2.2 0 0 0 0-3.6"/></svg></span>
+            <h3>CRM</h3>
+            <p>Manage leads, pipelines, and customer relationships.</p>
+            <span class="pc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span>
+          </a>
+          <a class="pcard" href="https://os.roqhome.com/signup">
+            <span class="pc-icon"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="16" rx="2.4"/><path d="M3.5 10h17M8 3v4M16 3v4"/><circle cx="8.5" cy="14.5" r="1.1" fill="currentColor" stroke="none"/><circle cx="13" cy="14.5" r="1.1" fill="currentColor" stroke="none"/></svg></span>
+            <h3>Scheduling</h3>
+            <p>Schedule jobs, assign techs, and reduce no-shows.</p>
+            <span class="pc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span>
+          </a>
+          <a class="pcard" href="https://os.roqhome.com/signup">
+            <span class="pc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5 20.5c0-3.7 3.1-6 7-6s7 2.3 7 6"/></svg></span>
+            <h3>Customers</h3>
+            <p>Centralize customer information and job history.</p>
+            <span class="pc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span>
+          </a>
+          <a class="pcard" href="https://os.roqhome.com/signup">
+            <span class="pc-icon"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2.2"/><path d="M3 10h18M6.5 14.5h4"/></svg></span>
+            <h3>Payments</h3>
+            <p>Invoice faster and get paid securely.</p>
+            <span class="pc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span>
+          </a>
+          <a class="pcard" href="https://os.roqhome.com/signup">
+            <span class="pc-icon"><svg viewBox="0 0 24 24"><path d="M13.5 2.5L4.5 13.8h6.2L10 21.5l9.2-11.4H13z"/></svg></span>
+            <h3>Automation</h3>
+            <p>Automate tasks and follow-ups to save time and increase productivity.</p>
+            <span class="pc-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5"/></svg></span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= RESULTS ================= -->
+  <section class="results">
+    <div class="wrap results-grid">
+
+      <div class="badge-card reveal">
+        <span class="badge-shield" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2.2l8 3v6.2c0 4.8-3.3 8.9-8 10.4-4.7-1.5-8-5.6-8-10.4V5.2z"/><path d="M12 7.6a2.4 2.4 0 0 0-1.2 4.5v2.3h2.4v-2.3A2.4 2.4 0 0 0 12 7.6z" fill="#fff"/></svg>
+        </span>
+        <p>Built for service businesses.<br>Backed by results.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div class="reveal">
+        <p class="eyebrow">About ROQ Business</p>
+        <h2>Built for local businesses that want to grow.</h2>
+        <p class="about-lede">One connected system for how you get found and how you get work done — so growth and operations stop pulling in different directions.</p>
+      </div>
+      <div class="about-items">
+        <div class="about-item reveal">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg>
+          <h3>One place for operations</h3>
+          <p>Manage jobs, customers, scheduling, payments, and more in a single system.</p>
+        </div>
+        <div class="about-item reveal">
+          <svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="2.2"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg>
+          <h3>Built for service businesses</h3>
+          <p>Designed specifically for service businesses and local professionals.</p>
+        </div>
+        <div class="about-item reveal">
+          <svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.8 2.8M15.2 15.2 18 18M18 6l-2.8 2.8M8.8 15.2 6 18"/></svg>
+          <h3>Designed to feel simple</h3>
+          <p>Intuitive, modern, and easy to use — so you can focus on your customers.</p>
+        </div>
+        <div class="about-item reveal">
+          <svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>
+          <h3>Turn visibility into growth</h3>
+          <p>Attract more customers, win more jobs, and grow with confidence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="contact-card reveal">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Get found.<br>Run better.</h2>
+          <p>Tell us about your business and we'll send you a free visibility score — where you turn up in local search today, and what's holding you back.</p>
+          <div class="contact-actions">
+            <button type="button" class="btn btn-white" data-score-open>Free Visibility Score
+              <svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <a class="btn btn-ghost" href="https://os.roqhome.com/login">Sign in
+              <svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="contact-side">
+          <a class="contact-line" href="mailto:support@roqhome.com">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2.2"/><path d="M3.6 7l8.4 6 8.4-6"/></svg>
+            <span><span class="cl-k">Email</span><span class="cl-v">support@roqhome.com</span></span>
+          </a>
+          <a class="contact-line" href="/development-intelligence.html">
+            <svg viewBox="0 0 24 24"><path d="M4 20V5"/><rect x="7" y="12" width="3.2" height="8" rx="1"/><rect x="13" y="8" width="3.2" height="12" rx="1"/><path d="M4 20h17"/></svg>
+            <span><span class="cl-k">Also from ROQ</span><span class="cl-v">Development Intelligence</span></span>
+          </a>
+          <div class="contact-line">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M12 7v5l3.2 2"/></svg>
+            <span><span class="cl-k">Response time</span><span class="cl-v">Within one business day</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <span class="wordmark">
+            <img src="/assets/logo/roq-icon-192.png" alt="ROQ" width="34" height="34">
+            <span>SERVE</span>
+          </span>
+          <p class="footer-tagline">Get found. Run better. The operating system for local service businesses.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="#grow">Grow</a>
+          <a href="#operate">Operate</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <a href="/development-intelligence.html">Development Intelligence</a>
+          <a href="https://os.roqhome.com/login">Sign in</a>
+          <a href="/">ROQ Invest</a>
+          <a href="https://roqhome.com/">ROQ Home</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 ROQ Innovation LLC. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="/legal/roq-privacy.html">Privacy</a>
+          <a href="/legal/roq-terms.html">Terms</a>
+          <a href="mailto:support@roqhome.com">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ---------- Free Visibility Score questionnaire ---------- -->
+  <div class="modal-overlay" id="scoreModal" role="dialog" aria-modal="true" aria-labelledby="scoreTitle" hidden>
+    <div class="modal-panel">
+      <button type="button" class="modal-close" id="scoreClose" aria-label="Close">
+        <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+
+      <div id="scoreFormWrap">
+        <h2 id="scoreTitle">Free Visibility Score</h2>
+        <p class="modal-sub">Four quick questions. We'll check how you turn up in local search and send your score back.</p>
+
+        <form id="scoreForm" novalidate>
+          <div class="field">
+            <label for="sfBusiness">Business name</label>
+            <input type="text" id="sfBusiness" placeholder="Aurora Heating &amp; Air" autocomplete="organization" required>
+          </div>
+
+          <div class="field">
+            <label for="sfCity">City</label>
+            <input type="text" id="sfCity" placeholder="Topeka, KS" autocomplete="address-level2" required>
+          </div>
+
+          <div class="field">
+            <label for="sfWebsite">Website <i>(optional)</i></label>
+            <input type="text" id="sfWebsite" placeholder="yourbusiness.com" autocomplete="url" inputmode="url">
+          </div>
+
+          <div class="field">
+            <label>Where should we send your score?</label>
+            <div class="seg" id="sfSeg" role="group" aria-label="Delivery method">
+              <button type="button" class="on" data-method="email" aria-pressed="true">Email</button>
+              <button type="button" data-method="text" aria-pressed="false">Text</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="sfContact" id="sfContactLabel">Email address</label>
+            <input type="email" id="sfContact" placeholder="you@yourbusiness.com" autocomplete="email" required>
+          </div>
+
+          <p class="modal-error" id="sfError"></p>
+
+          <div class="modal-actions">
+            <button type="submit" class="btn btn-dark" id="sfSubmit">Get My Score
+              <svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+          <p class="modal-fine">No cost, no obligation. We'll only use your details to send this score &mdash; see our <a href="/legal/roq-privacy.html">privacy policy</a>.</p>
+        </form>
+      </div>
+
+      <div class="modal-done" id="scoreDone">
+        <span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+        <h3>We're on it.</h3>
+        <p id="scoreDoneMsg">We'll pull your local visibility together and send your score over shortly.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---------- Header: mobile menu + scrolled state ----------
+    (function initHeader() {
+      const header = document.getElementById('siteHeader');
+      const tabs = document.getElementById('siteTabs');
+      const toggle = document.getElementById('navToggle');
+
+      if (toggle && tabs) {
+        toggle.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isOpen = tabs.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', String(isOpen));
+        });
+        tabs.addEventListener('click', (e) => {
+          if (e.target.tagName === 'A') {
+            tabs.classList.remove('open');
+            toggle.setAttribute('aria-expanded', 'false');
+          }
+        });
+        document.addEventListener('click', () => {
+          tabs.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      }
+
+      if (header) {
+        const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+      }
+    })();
+
+    // ---------- Nav: highlight the section in view ----------
+    (function initSpy() {
+      const links = Array.from(document.querySelectorAll('.site-tabs a'));
+      const map = new Map();
+      links.forEach(a => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (el) map.set(el, a);
+      });
+      if (!map.size) return;
+
+      const spy = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          links.forEach(a => a.classList.remove('active'));
+          map.get(entry.target).classList.add('active');
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+
+      map.forEach((_, el) => spy.observe(el));
+    })();
+
+    // ---------- Free Visibility Score questionnaire ----------
+    (function initScoreForm() {
+      // Same Supabase project the Development Intelligence form posts to.
+      const SUPABASE_URL = 'https://pgcospvlhorcvssafjoo.supabase.co';
+      const SUPABASE_ANON_KEY = 'sb_publishable_E8B6OF7rTmNhlEVvS36fiA_wewl5tER';
+      const FUNCTION_URL = `${SUPABASE_URL}/functions/v1/visibility-score-request`;
+
+      const overlay = document.getElementById('scoreModal');
+      const panel = overlay.querySelector('.modal-panel');
+      const formWrap = document.getElementById('scoreFormWrap');
+      const form = document.getElementById('scoreForm');
+      const doneWrap = document.getElementById('scoreDone');
+      const doneMsg = document.getElementById('scoreDoneMsg');
+      const closeBtn = document.getElementById('scoreClose');
+      const submitBtn = document.getElementById('sfSubmit');
+      const errorEl = document.getElementById('sfError');
+      const seg = document.getElementById('sfSeg');
+      const contactInput = document.getElementById('sfContact');
+      const contactLabel = document.getElementById('sfContactLabel');
+      const business = document.getElementById('sfBusiness');
+      const city = document.getElementById('sfCity');
+      const website = document.getElementById('sfWebsite');
+
+      let method = 'email';
+      let lastFocused = null;
+
+      function openModal() {
+        lastFocused = document.activeElement;
+        overlay.hidden = false;
+        // let the browser paint the hidden state before transitioning in
+        requestAnimationFrame(() => overlay.classList.add('open'));
+        document.body.style.overflow = 'hidden';
+        setTimeout(() => business.focus(), 260);
+      }
+
+      function closeModal() {
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+        setTimeout(() => { overlay.hidden = true; }, 300);
+        if (lastFocused) lastFocused.focus();
+      }
+
+      document.querySelectorAll('[data-score-open]').forEach(btn => {
+        btn.addEventListener('click', openModal);
+      });
+      closeBtn.addEventListener('click', closeModal);
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+      });
+
+      // Keep tabbing inside the dialog while it is open.
+      panel.addEventListener('keydown', (e) => {
+        if (e.key !== 'Tab') return;
+        const items = panel.querySelectorAll('button, input, a[href]');
+        const list = Array.from(items).filter(el => !el.disabled && el.offsetParent !== null);
+        if (!list.length) return;
+        const first = list[0];
+        const last = list[list.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      });
+
+      // Email / Text toggle rewires the one contact field.
+      seg.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          method = btn.dataset.method;
+          seg.querySelectorAll('button').forEach(b => {
+            const on = b === btn;
+            b.classList.toggle('on', on);
+            b.setAttribute('aria-pressed', String(on));
+          });
+          if (method === 'email') {
+            contactLabel.textContent = 'Email address';
+            contactInput.type = 'email';
+            contactInput.placeholder = 'you@yourbusiness.com';
+            contactInput.autocomplete = 'email';
+            contactInput.inputMode = 'email';
+          } else {
+            contactLabel.textContent = 'Mobile number';
+            contactInput.type = 'tel';
+            contactInput.placeholder = '(555) 555-5555';
+            contactInput.autocomplete = 'tel';
+            contactInput.inputMode = 'tel';
+          }
+          contactInput.value = '';
+          errorEl.classList.remove('show');
+        });
+      });
+
+      function fail(msg) {
+        errorEl.textContent = msg;
+        errorEl.classList.add('show');
+      }
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        errorEl.classList.remove('show');
+
+        const businessName = business.value.trim();
+        const cityValue = city.value.trim();
+        const contact = contactInput.value.trim();
+
+        if (!businessName) return fail('Please enter your business name.');
+        if (!cityValue) return fail('Please enter the city you serve.');
+        if (!contact) return fail(method === 'email' ? 'Please enter your email address.' : 'Please enter your mobile number.');
+        if (method === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(contact)) {
+          return fail('That email address does not look right.');
+        }
+        if (method === 'text' && contact.replace(/\D/g, '').length < 10) {
+          return fail('Please enter a full mobile number, including area code.');
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+
+        try {
+          const res = await fetch(FUNCTION_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              apikey: SUPABASE_ANON_KEY,
+              Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+            },
+            body: JSON.stringify({
+              business_name: businessName,
+              city: cityValue,
+              website: website.value.trim(),
+              contact_method: method,
+              contact: contact,
+              source: 'roqbusiness.com',
+            }),
+          });
+
+          if (!res.ok) throw new Error('Request failed');
+
+          doneMsg.textContent = method === 'email'
+            ? `We'll pull your local visibility together and email your score to ${contact}.`
+            : `We'll pull your local visibility together and text your score to ${contact}.`;
+          formWrap.style.display = 'none';
+          doneWrap.classList.add('show');
+        } catch (err) {
+          fail('Something went wrong sending that. Please try again, or email support@roqhome.com.');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = 'Get My Score <svg viewBox="0 0 24 24"><path d="M5 12h13M13 7l5 5-5 5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        }
+      });
+    })();
+
+    // ---------- Scroll reveal ----------
+    (function initReveal() {
+      const items = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      items.forEach(el => observer.observe(el));
+    })();
+  </script>
+
+</body>
+</html>
