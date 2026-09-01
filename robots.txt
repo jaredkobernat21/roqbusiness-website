@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /serve.html
 
 Sitemap: https://roqbusiness.com/sitemap.xml
