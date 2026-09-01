@@ -71,17 +71,28 @@
   /* ---------------- Header ---------------- */
 
   .site-header {
-    position: sticky;
-    top: 0;
+    position: fixed;
+    top: 0; left: 0; right: 0;
     z-index: 100;
-    background: var(--surface);
+    background: transparent;
     border-bottom: 1px solid transparent;
-    transition: border-color .3s var(--ease), box-shadow .3s var(--ease);
+    transition: background .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease);
+  }
+  .site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+    transition: opacity .35s var(--ease);
   }
   .site-header.scrolled {
+    background: var(--surface);
     border-bottom-color: var(--line);
     box-shadow: 0 1px 20px rgba(10,10,10,0.04);
   }
+  .site-header.scrolled::before { opacity: 0; }
   .header-inner {
     display: flex;
     align-items: center;
@@ -90,26 +101,17 @@
     height: 82px;
   }
 
-  .wordmark {
-    display: inline-flex;
-    align-items: center;
-    gap: 11px;
-    white-space: nowrap;
+  .site-logo { display: flex; align-items: center; }
+  .logo-mark { width: 28px; height: 28px; display: block; }
+  .logo-mark path {
+    fill: none;
+    stroke: #FFFFFF;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke .35s var(--ease);
   }
-  .wordmark img {
-    width: 34px;
-    height: 34px;
-    display: block;
-    flex: none;
-    border-radius: 8px;
-  }
-  .wordmark span {
-    font-weight: 500;
-    font-size: 13px;
-    letter-spacing: 0.34em;
-    color: var(--ink-2);
-    line-height: 1;
-  }
+  .site-header.scrolled .logo-mark path { stroke: var(--ink); }
 
   .site-tabs {
     display: flex;
@@ -117,26 +119,33 @@
     gap: clamp(18px, 2.6vw, 40px);
   }
   .site-tabs a {
-    font-size: 14.5px;
+    font-size: 12px;
     font-weight: 500;
-    color: var(--ink-2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.62);
     padding: 6px 0;
     position: relative;
-    transition: color .2s var(--ease);
+    transition: color .25s var(--ease);
   }
-  .site-tabs a:hover { color: var(--ink); }
+  .site-tabs a:hover { color: #FFFFFF; }
   .site-tabs a::after {
     content: '';
     position: absolute;
     left: 0; right: 0; bottom: -1px;
     height: 1.5px;
-    background: var(--ink);
+    background: #FFFFFF;
     transform: scaleX(0);
     transition: transform .28s var(--ease);
   }
   .site-tabs a:hover::after,
   .site-tabs a.active::after { transform: scaleX(1); }
-  .site-tabs a.active { color: var(--ink); font-weight: 600; }
+  .site-tabs a.active { color: #FFFFFF; }
+
+  .site-header.scrolled .site-tabs a { color: var(--ink-2); }
+  .site-header.scrolled .site-tabs a:hover,
+  .site-header.scrolled .site-tabs a.active { color: var(--ink); }
+  .site-header.scrolled .site-tabs a::after { background: var(--ink); }
 
   .header-actions { display: flex; align-items: center; gap: 12px; }
 
@@ -167,29 +176,42 @@
   .btn-outline { background: transparent; color: var(--ink); border-color: var(--line); }
   .btn-outline:hover { border-color: #C9C9C3; background: var(--surface-2); transform: translateY(-1px); }
   .header-actions .btn { height: 46px; }
+  .header-actions .btn-dark {
+    background: #fff;
+    color: var(--ink);
+    transition: transform .25s var(--ease), background .35s var(--ease), color .35s var(--ease);
+  }
+  .header-actions .btn-dark:hover { background: #F0F0EC; }
+  .site-header.scrolled .header-actions .btn-dark { background: var(--ink); color: #fff; }
+  .site-header.scrolled .header-actions .btn-dark:hover { background: #262624; }
 
   .btn-label-short { display: none; }
 
   .nav-toggle {
     display: none;
     width: 44px; height: 44px;
-    border: 1px solid var(--line);
+    border: 1px solid rgba(255,255,255,0.16);
     border-radius: 12px;
-    background: var(--surface);
+    background: transparent;
     align-items: center;
     justify-content: center;
+    transition: border-color .35s var(--ease);
   }
   .nav-toggle span, .nav-toggle span::before, .nav-toggle span::after {
     content: '';
     display: block;
     width: 17px; height: 1.6px;
-    background: var(--ink);
+    background: #FFFFFF;
     border-radius: 2px;
-    transition: transform .3s var(--ease);
+    transition: transform .3s var(--ease), background .35s var(--ease);
   }
   .nav-toggle span { position: relative; }
   .nav-toggle span::before { position: absolute; top: -5.5px; }
   .nav-toggle span::after { position: absolute; top: 5.5px; }
+  .site-header.scrolled .nav-toggle { border-color: var(--line); }
+  .site-header.scrolled .nav-toggle span,
+  .site-header.scrolled .nav-toggle span::before,
+  .site-header.scrolled .nav-toggle span::after { background: var(--ink); }
 
   .eyebrow {
     font-size: 12px;
@@ -208,7 +230,7 @@
     min-height: clamp(520px, 56vw, 700px);
     display: flex;
     align-items: center;
-    padding: clamp(40px, 5.4vw, 68px) 0 clamp(46px, 6vw, 84px);
+    padding: clamp(112px, 11vw, 148px) 0 clamp(46px, 6vw, 84px);
     overflow: hidden;
   }
   .hero-bg {
@@ -533,6 +555,27 @@
 
   /* ---------------- Footer ---------------- */
 
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+    white-space: nowrap;
+  }
+  .wordmark img {
+    width: 34px;
+    height: 34px;
+    display: block;
+    flex: none;
+    border-radius: 8px;
+  }
+  .wordmark span {
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.34em;
+    color: var(--ink-2);
+    line-height: 1;
+  }
+
   footer { border-top: 1px solid var(--line); padding: clamp(34px, 4vw, 54px) 0 34px; }
   .footer-grid {
     display: flex;
@@ -645,9 +688,10 @@
 
   <header class="site-header" id="siteHeader">
     <div class="wrap header-inner">
-      <a class="wordmark" href="/" aria-label="Lode">
-        <img src="/assets/logo/roq-icon-192.png" alt="" width="34" height="34">
-        <span>LODE</span>
+      <a class="site-logo" href="/" aria-label="Lode">
+        <svg class="logo-mark" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 70 L32 42 L50 25 Q74 40 67 70" />
+        </svg>
       </a>
 
       <nav class="site-tabs" id="siteTabs" aria-label="Main">
@@ -1093,7 +1137,14 @@
         });
       }
 
-      if (header) {
+      const hero = document.querySelector('.hero');
+      if (header && hero && 'IntersectionObserver' in window) {
+        const headerHeight = header.offsetHeight || 82;
+        const heroObserver = new IntersectionObserver(([entry]) => {
+          header.classList.toggle('scrolled', !entry.isIntersecting);
+        }, { rootMargin: `-${headerHeight}px 0px 0px 0px`, threshold: 0 });
+        heroObserver.observe(hero);
+      } else if (header) {
         const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 8);
         onScroll();
         window.addEventListener('scroll', onScroll, { passive: true });
